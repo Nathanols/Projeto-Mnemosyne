@@ -11,7 +11,7 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="criar" element={<CriarMemoria />}/>
+        <Route path="/criar" element={<CriarMemoria />}/>
         <Route path="/detalhes" element={<Detalhes />} />
         <Route path="/home" element={<Home />} />
       </Routes>
@@ -20,4 +20,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

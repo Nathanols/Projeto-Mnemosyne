@@ -1,9 +1,27 @@
+import { useEffect, useState } from "react"
 import Footer from "../../src/components/footer/Footer"
 import Header from "../../src/components/header/Header"
+
+import {Link} from "react-router-dom"
 
 import '../home/home.css'
 
 const Home = () => {
+
+    const[memorias, setMemorias] = useState([]);
+    useEffect(() => {
+        const carregarMemorias = async () => {
+            try{
+                const response = await fetch("http://localhost:3000/memorias");
+                const dados = await response.json();
+                console.log("Memorias caregadas", dados);
+                setMemorias(dados);
+            }catch(error){
+                console.error("Erro ao carregar memórias", error)
+            }
+        }
+        carregarMemorias();
+    }, [])
 
     return (
         <>
@@ -11,19 +29,29 @@ const Home = () => {
         <main className="app-main">
             <h1>Meus momentos</h1>
             <div className="cards-container">
-                <a href="#" class="card-link">
+                {
+                    memorias.map((memoria) => (
                     <div className="card">
-                        <div className="imagem"></div>
-                        <h2></h2>
-                        <p></p>
+                        <div className="imagem"
+                            style={{
+                                backgroundImage: memoria.imagens[0] ? `url(${memoria.imagens[0]})` : "nome",
+                            }}
+                        ></div>
+                        <h2>{memoria.titulo}</h2>
+                        <p>{memoria.descricao}</p>
                     </div>
+                    ))
+                }
+
+                <a href="#" class="card-link">
                 </a>
                 <div className="card">
-                    <a href="#">
+                    <Link to={"/criar"}>
                         <div class="add"></div>
                         <h2>Adicionar memória</h2>
                         <p>Clique aqui para adicionar mais memórias.</p>
-                    </a>
+                    </Link>
+                    
                 </div>
             </div>
         </main>
