@@ -1,13 +1,16 @@
+import { Link } from 'react-router';
 import LogoMnemosyne from '../../assets/icon/mnemosyne-logo.svg'
 
 const Header = () => {
 
     return(
         <header class="app-header">
-        <img src = {LogoMnemosyne} alt="Logo site mnemosyne"/>
+            <Link to="/home">
+                <img src = {LogoMnemosyne} alt="Logo site mnemosyne"/>
+            </Link>
         <nav class="links">
-            <a href="#">home</a>
-            <a href="#">adicionar memória</a>
+            <Link to="/home">Home</Link>
+            <Link to="/criar">Adicionar Memória</Link>
         </nav>
     </header>
     )

@@ -31,15 +31,17 @@ const Home = () => {
             <div className="cards-container">
                 {
                     memorias.map((memoria) => (
-                    <div className="card">
-                        <div className="imagem"
-                            style={{
-                                backgroundImage: memoria.imagens[0] ? `url(${memoria.imagens[0]})` : "nome",
-                            }}
-                        ></div>
-                        <h2>{memoria.titulo}</h2>
-                        <p>{memoria.descricao}</p>
-                    </div>
+                        <Link to={`/detalhes${memoria.id}`} key={memoria.id} className="card-link">
+                            <div className="card">
+                                <div className="imagem"
+                                    style={{
+                                        backgroundImage: memoria.imagens[0] ? `url(${memoria.imagens[0]})` : "nome",
+                                    }}
+                                ></div>
+                                <h2>{memoria.titulo}</h2>
+                                <p>{memoria.descricao}</p>
+                            </div>
+                        </Link>
                     ))
                 }
 

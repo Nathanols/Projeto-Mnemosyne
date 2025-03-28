@@ -14,6 +14,8 @@ function App() {
         <Route path="/criar" element={<CriarMemoria />}/>
         <Route path="/detalhes" element={<Detalhes />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/detalhes/:id" element={<Detalhes />}/>
       </Routes>
       </BrowserRouter>
     </>
